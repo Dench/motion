@@ -63,7 +63,9 @@ class SiteController extends Controller
         }
 
         $minute = $time-$begin1;
-        
-        return round($minute/60);
+
+        $return = round($minute/60);
+
+        return json_encode($return);
     }
 }
