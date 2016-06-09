@@ -66,4 +66,57 @@ class Motion extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Object::className(), ['id' => 'object_id']);
     }
+
+    public static function monthActivity($object_id, $time)
+    {
+        if (empty($time)) $time = time();
+
+        $start = mktime(0, 0, 0, date('n', $time), 0, date('Y', $time));
+        $end = mktime(0, 0, 0, date('n', $time), date('t', $time), date('Y', $time)) + 3600*24;
+
+        $query = static::find()->select(['FROM_UNIXTIME(time, "%d.%m.%Y") date', 'COUNT(*) count'])->groupBy('date')->where(['object_id' => $object_id]);
+
+        $query->andWhere(['>', 'time', $start]);
+        $query->andWhere(['<', 'time', $end]);
+
+        $temp =  $query->asArray()->all();
+
+        $return = [];
+
+        foreach ($temp as $t) {
+            $return[$t['date']] = $t['count'];
+        }
+
+        return $return;
+    }
+
+    public static function dayActivity($object_id, $time)
+    {
+        if (empty($time)) $time = time();
+
+        $start = mktime(0, 0, 0, date('n', $time), date('j', $time), date('Y', $time));
+        
+        $end = $start+3600*24;
+
+        $query = static::find()->select(['FROM_UNIXTIME(time, "%k") hour', 'COUNT(*) count'])->groupBy('hour')->where(['object_id' => $object_id]);
+
+        $query->andWhere(['>', 'time', $start]);
+        $query->andWhere(['<', 'time', $end]);
+
+        $temp =  $query->asArray()->all();
+
+        $hour = [];
+
+        foreach ($temp as $t) {
+            $hour[$t['hour']] = $t['count'];
+        }
+
+        $return = [];
+        
+        for ($i = 0; $i < 24; $i++) {
+            $return[$i] = @$hour[$i]+0;
+        }
+
+        return $return;
+    }
 }

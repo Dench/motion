@@ -3,15 +3,17 @@ use yii\helpers\Url;
 ?>
 
 <div class="box">
-    <div class="box-header with-border">
-        <a href="<?= Url::to(['activity/index', 'time' => $before]) ?>"><i class="fa fa-arrow-circle-left"></i></a>
+    <div class="box-header with-border text-center">
         <h3 class="box-title"><?= $month ?>, <?= $year ?></h3>
-        <a href="<?= Url::to(['activity/index', 'time' => $next]) ?>"><i class="fa fa-arrow-circle-right"></i></a>
         <div class="box-tools pull-right">
-            <div class="btn-group">
-                <a href="#" class="btn btn-default btn-sm active">Month</a>
-                <a href="#" class="btn btn-default btn-sm">Day</a>
-            </div>
+            <a href="<?= Url::to(['activity/index', 'time' => $next]) ?>" class="btn btn-default btn-sm">
+                <i class="fa fa-chevron-right"></i>
+            </a>
+        </div>
+        <div class="box-tools box-tools-left pull-left">
+            <a href="<?= Url::to(['activity/index', 'time' => $before]) ?>" class="btn btn-default btn-sm">
+                <i class="fa fa-chevron-left"></i>
+            </a>
         </div>
     </div>
     <div class="box-body no-padding">
@@ -36,7 +38,7 @@ use yii\helpers\Url;
                         if ($v['other'] || $v['active'] || $v['now']) {
                             echo ' class="';
                             if ($v['other']) echo 'other ';
-                            //if ($v['active']) echo 'active ';
+                            if ($v['active']) echo 'active ';
                             if ($v['now']) echo 'now ';
                             echo '"';
                         }
@@ -91,5 +93,9 @@ use yii\helpers\Url;
         border-radius: 50%;
         width: 0;
         height: 0;
+    }
+    .box-header>.box-tools-left {
+        right: auto;
+        left: 10px;
     }
 </style>

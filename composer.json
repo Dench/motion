@@ -19,7 +19,7 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "dmstr/yii2-adminlte-asset": "2.*",
-        "yiisoft/yii2-jui": "^2.0"
+        "dench/yii2-chartjs": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -27,6 +27,12 @@
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*"
     },
+    "repositories":[
+        {
+            "type": "git",
+            "url": "https://github.com/dench/yii2-chartjs"
+        }
+    ],
     "config": {
         "process-timeout": 1800
     },

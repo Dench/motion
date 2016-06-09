@@ -64,7 +64,11 @@ class SiteController extends Controller
 
         $minute = $time-$begin1;
 
-        $return = round($minute/60);
+        $return['time'] = round($minute/60);
+
+        /*$return['setting'] = [
+            'hello' => '12345'
+        ];*/
 
         return json_encode($return);
     }
