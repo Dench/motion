@@ -22,7 +22,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Motion</b>Control</a>
+        <a href="#"><b><?= Yii::$app->name ?></b>Control</a>
     </div>
 
     <div class="login-box-body">

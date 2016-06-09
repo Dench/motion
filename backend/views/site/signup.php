@@ -29,7 +29,7 @@ $fieldOptions3 = [
 
 <div class="register-box">
     <div class="register-logo">
-        <a href="#"><b>Motion</b>Control</a>
+        <a href="#"><b><?= Yii::$app->name ?></b>Control</a>
     </div>
 
     <div class="register-box-body">

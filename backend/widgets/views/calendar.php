@@ -1,4 +1,6 @@
 <?php
+/* @var $month \backend\widgets\Calendar */
+
 use yii\helpers\Url;
 ?>
 
@@ -20,13 +22,13 @@ use yii\helpers\Url;
         <table class="table table-bordered calendar">
             <thead>
                 <tr>
-                    <th>Пн</th>
-                    <th>Вт</th>
-                    <th>Ср</th>
-                    <th>Чт</th>
-                    <th>Пт</th>
-                    <th>Сб</th>
-                    <th>Вс</th>
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                    <th>Su</th>
                 </tr>
             </thead>
             <tbody>
@@ -81,6 +83,7 @@ use yii\helpers\Url;
     .calendar a.active:hover,
     .calendar td a:hover {
         background: #f5f5f5;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, .1);
     }
     .calendar a.now,
     .calendar a.now:hover {

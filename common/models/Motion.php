@@ -67,6 +67,11 @@ class Motion extends \yii\db\ActiveRecord
         return $this->hasOne(Object::className(), ['id' => 'object_id']);
     }
 
+    /**
+     * @param $object_id
+     * @param $time
+     * @return array
+     */
     public static function monthActivity($object_id, $time)
     {
         if (empty($time)) $time = time();
@@ -90,6 +95,11 @@ class Motion extends \yii\db\ActiveRecord
         return $return;
     }
 
+    /**
+     * @param $object_id
+     * @param $time
+     * @return array
+     */
     public static function dayActivity($object_id, $time)
     {
         if (empty($time)) $time = time();

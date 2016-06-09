@@ -83,13 +83,12 @@ class Calendar extends \yii\bootstrap\Widget
             ];
         }
 
-        $start = $start_month + $from*3600*24; // Начало календаря
-
-        $end = $start_month + $to*3600*24-1; // Конец календаря
+        //$start = $start_month + $from*3600*24; // Начало календаря
+        //$end = $start_month + $to*3600*24-1; // Конец календаря
         
-        $next = $end + 1;
+        $next = $start_month + $t*3600*24;
         
-        $before = $start_month - 1;
+        $before = $start_month - 3600*24;
         
         return $this->render('calendar', [
             'days' => $days,

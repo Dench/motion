@@ -74,4 +74,25 @@ class Debug extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Device::className(), ['id' => 'device_id']);
     }
+
+    /**
+     * @param $object_id
+     * @param $time
+     * @return array
+     */
+    public static function dayActivity($device_id, $time)
+    {
+        if (empty($time)) $time = time();
+
+        $start = mktime(0, 0, 0, date('n', $time), date('j', $time), date('Y', $time));
+
+        $end = $start+3600*24;
+
+        $query = static::find()->where(['device_id' => $device_id]);
+
+        $query->andWhere(['>', 'time', $start]);
+        $query->andWhere(['<', 'time', $end]);
+
+        return $query->orderBy(['id' => SORT_DESC])->asArray()->all();
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $labels array */
-/* @var $data array */
+/* @var $motion array */
 /* @var $time integer */
 
 use dench\chartjs\ChartJs;
@@ -20,9 +20,9 @@ $this->title = 'Activity';
         ?>
     </div>
     <div class="col-md-8">
-        <div class="box">
+        <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Hello</h3>
+                <h3 class="box-title">Active hourly</h3>
             </div>
             <div class="box-body">
                 <?php
@@ -33,11 +33,11 @@ $this->title = 'Activity';
                         'label' => 'Activity',
                         'backgroundColor' => 'rgba('.$color['default'].', 0.4)',
                         'borderColor' => 'rgb('.$color['default'].')',
-                        'data' => $data
+                        'data' => $motion
                     ]
                 ];
                 $labels = [];
-                foreach ($data as $key => $value) {
+                foreach ($motion as $key => $value) {
                     if ($value > 0) {
                         $active = 'rgb('.$color['active'].')';
                     } else {
@@ -56,12 +56,6 @@ $this->title = 'Activity';
                         'legend' => [
                             'display' => false
                         ],
-                        /*'tooltips' => [
-                            'callbacks' => [
-                                'title' => new \yii\web\JsExpression("function(){}"),
-                                'label' => new \yii\web\JsExpression("function(item, data){ return item.yLabel; }"),
-                            ]
-                        ],*/
                     ],
                     'data' => [
                         'labels' => $labels,
@@ -69,6 +63,48 @@ $this->title = 'Activity';
                     ]
                 ]);
                 ?>
+            </div>
+        </div>
+        <div class="box box-default collapsed-box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Debug</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="debug">
+                    <?php
+                    foreach ($debug as $key => $value) {
+                        if (strpos($value['data'], 'Wi-Fi') ||
+                            strpos($value['data'], 'Timeout') ||
+                            strpos($value['data'], 'failed') ||
+                            strpos($value['data'], 'ESP8266')) {
+                            $class = ' class="red"';
+                        } elseif (strpos($value['data'], 'Motion')) {
+                            $class = ' class="ok"';
+                        } elseif (strpos($value['data'], 'Up')) {
+                            $class = ' class="up"';
+                        } else {
+                            $class = '';
+                        }
+                        echo '<div'.$class.'>'.date('H:i:s', $value['time']).' --- '.$value['data'].'</div>';
+                    }
+                    ?>
+                </div>
+
+                <style>
+                    #debug .red {
+                        color: red;
+                    }
+                    #debug .ok {
+                        color: green;
+                    }
+                    #debug .up {
+                        color: blue;
+                    }
+                </style>
             </div>
         </div>
     </div>
