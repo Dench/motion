@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "871efe9ced7d889e77ec6d5570384e9c",
-    "content-hash": "7f4730e18c02f787108e7f232d87ff8f",
+    "hash": "a0622f4dd1298bc406827c211cb819ed",
+    "content-hash": "d0d38ed7d8e76f4bb902bc33c88b83ca",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -98,16 +98,16 @@
         },
         {
             "name": "bower-asset/chartjs",
-            "version": "v2.1.4",
+            "version": "v2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chartjs/Chart.js.git",
-                "reference": "40d76b6a7ba14aeac69b05ad15d713c3402867b2"
+                "reference": "07662b158d829f395b2c97d732e60599b8b5c4e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/40d76b6a7ba14aeac69b05ad15d713c3402867b2",
-                "reference": "40d76b6a7ba14aeac69b05ad15d713c3402867b2",
+                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/07662b158d829f395b2c97d732e60599b8b5c4e4",
+                "reference": "07662b158d829f395b2c97d732e60599b8b5c4e4",
                 "shasum": ""
             },
             "require-dev": {
@@ -368,11 +368,17 @@
         },
         {
             "name": "dench/yii2-chartjs",
-            "version": "dev-master",
+            "version": "v0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dench/yii2-chartjs",
-                "reference": "865bb6d9c15bb9bd98d84cdd18a0045c82117247"
+                "url": "https://github.com/dench/yii2-chartjs.git",
+                "reference": "0e6fd6748330ebe0c2133de6295dd77f08d74887"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dench/yii2-chartjs/zipball/0e6fd6748330ebe0c2133de6295dd77f08d74887",
+                "reference": "0e6fd6748330ebe0c2133de6295dd77f08d74887",
+                "shasum": ""
             },
             "require": {
                 "bower-asset/chartjs": "2.*",
@@ -389,6 +395,7 @@
                     "dench\\chartjs\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -406,7 +413,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-06-08 18:33:14"
+            "time": "2016-06-09 13:43:15"
         },
         {
             "name": "dmstr/yii2-adminlte-asset",
@@ -1161,9 +1168,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dench/yii2-chartjs": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
