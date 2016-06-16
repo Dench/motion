@@ -32,43 +32,41 @@ class SiteController extends Controller
     {
         $time = time();
 
-        $motion = explode('.', Yii::$app->request->get('motion'));
-
         $device = Device::findOne($id);
-
-	    $begin1 = mktime(0, 0, 0, date('n', $time), date('j', $time), date('Y', $time));
-
-        $begin2 = mktime(0, 0, 0, date('n', $device->time), date('j', $device->time), date('Y', $device->time));
-
         $device->time = $time;
         $device->save();
 
-        foreach ($motion as $d) {
-            $motion = new Motion();
-            $motion->object_id = $device->object_id;
-            $motion->device_id = $id;
-            $motion->time = $begin2+$d*60;
-            $motion->save();
+        if (!empty(Yii::$app->request->get('motion'))) {
+            $motion = explode('.', Yii::$app->request->get('motion'));
+
+            foreach ($motion as $d) {
+                $motion = new Motion();
+                $motion->object_id = $device->object_id;
+                $motion->device_id = $id;
+                $motion->time = $d*60;
+                $motion->save();
+            }
         }
 
-        $debug = explode('|', Yii::$app->request->get('debug'));
+        if (!empty(Yii::$app->request->get('debug'))) {
+            $debug = explode('|', Yii::$app->request->get('debug'));
 
-	    foreach ($debug as $d) {
-            $d = str_replace('_', ' ', $d);
-            $d = str_replace('@', '@ ', $d);
-            $debug = new Debug();
-            $debug->data = $d;
-            $debug->device_id = $id;
-            $debug->save();
+            foreach ($debug as $d) {
+                $debug = new Debug();
+                $debug->data = urldecode($d);
+                $debug->device_id = $id;
+                $debug->save();
+            }
         }
 
-        $minute = $time-$begin1;
+        $return['time'] = round($time/60);
 
-        $return['time'] = round($minute/60);
-
-        /*$return['setting'] = [
-            'hello' => '12345'
+        //$return['fs'] = true;
+        /*$return['write'] = [
+            'filename' => '/data/12345.txt',
+            'data' => '24434523.24434524'
         ];*/
+        //$return['reset'] = true;
 
         return json_encode($return);
     }

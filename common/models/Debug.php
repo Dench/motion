@@ -16,7 +16,7 @@ use yii\db\ActiveRecord;
  *
  * @property Device $device
  */
-class Debug extends \yii\db\ActiveRecord
+class Debug extends ActiveRecord
 {
     /**
      * @inheritdoc

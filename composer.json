@@ -27,12 +27,6 @@
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*"
     },
-    "repositories":[
-        {
-            "type": "git",
-            "url": "https://github.com/dench/yii2-chartjs"
-        }
-    ],
     "config": {
         "process-timeout": 1800
     },
