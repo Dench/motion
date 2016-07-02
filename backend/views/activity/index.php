@@ -16,6 +16,7 @@ $this->title = 'Activity';
             'time' => $time,
             'defaultColor' => 'red',
             'labels' => $labels,
+            'id' => $id
         ]);
         ?>
     </div>

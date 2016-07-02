@@ -23,7 +23,8 @@ class ActivityController extends Controller
             'time' => $time,
             'labels' => $labels,
             'motion' => $motion,
-            'debug' => $debug
+            'debug' => $debug,
+            'id' => $id
         ]);
     }
 }

@@ -36,7 +36,7 @@ use yii\helpers\Url;
                     <?php
                     foreach ($days as $k => $v) {
                         if ($k%7 == 0) echo '</tr><tr>';
-                        echo '<td><a href="' . Url::to(['activity/index', 'time' => $v['time']]) . '"';
+                        echo '<td><a href="' . Url::to(['activity/index', 'id' => $id, 'time' => $v['time']]) . '"';
                         if ($v['other'] || $v['active'] || $v['now']) {
                             echo ' class="';
                             if ($v['other']) echo 'other ';

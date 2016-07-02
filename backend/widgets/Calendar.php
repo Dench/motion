@@ -10,6 +10,8 @@ class Calendar extends \yii\bootstrap\Widget
 
     public $labels;
     
+    public $id;
+    
     public function run()
     {
         if (empty($this->time)) $this->time = time();
@@ -95,7 +97,8 @@ class Calendar extends \yii\bootstrap\Widget
             'month' => date('F', $this->time),
             'year' => $Y,
             'next' => $next,
-            'before' => $before
+            'before' => $before,
+            'id' => $this->id
         ]);
     }
 }
