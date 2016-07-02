@@ -9,15 +9,15 @@ use yii\web\Controller;
 
 class ActivityController extends Controller
 {
-    public function actionIndex()
+    public function actionIndex($id)
     {
         $time = Yii::$app->request->get('time');
 
-        $labels = Motion::monthActivity(1, $time);
+        $labels = Motion::monthActivity($id, $time);
         
-        $motion = Motion::dayActivity(1, $time);
+        $motion = Motion::dayActivity($id, $time);
 
-        $debug = Debug::dayActivity(1, $time);
+        $debug = Debug::dayActivity($id, $time);
 
         return $this->render('index', [
             'time' => $time,
