@@ -8,12 +8,12 @@ use yii\helpers\Url;
     <div class="box-header with-border text-center">
         <h3 class="box-title"><?= $month ?>, <?= $year ?></h3>
         <div class="box-tools pull-right">
-            <a href="<?= Url::to(['activity/index', 'time' => $next]) ?>" class="btn btn-default btn-sm">
+            <a href="<?= Url::to(['activity/index', 'time' => $next, 'id' => $id]) ?>" class="btn btn-default btn-sm">
                 <i class="fa fa-chevron-right"></i>
             </a>
         </div>
         <div class="box-tools box-tools-left pull-left">
-            <a href="<?= Url::to(['activity/index', 'time' => $before]) ?>" class="btn btn-default btn-sm">
+            <a href="<?= Url::to(['activity/index', 'time' => $before, 'id' => $id]) ?>" class="btn btn-default btn-sm">
                 <i class="fa fa-chevron-left"></i>
             </a>
         </div>

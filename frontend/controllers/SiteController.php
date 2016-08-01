@@ -33,6 +33,7 @@ class SiteController extends Controller
         $time = time();
 
         $device = Device::findOne($id);
+        if (empty($device)) return false;
         $device->time = $time;
         $device->save();
 
